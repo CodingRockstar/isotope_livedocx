@@ -1,33 +1,55 @@
 <?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
- * PHP version 5
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2011 Leo Feyer
+ *
+ * Formerly known as TYPOlight Open Source CMS.
+ *
+ * This program is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation, either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this program. If not, please visit the Free
+ * Software Foundation website at <http://www.gnu.org/licenses/>.
+ *
+ *
+ * Class IsotopeLiveDocX
+ *
+ * Class for printing invoices with the LiveDocX-API
  * @copyright  Stephan Jahrling, 2011
  * @author     Stephan Jahrling <info@jahrling-software.de>
- * @license    commercial
+ * @license    http://opensource.org/licenses/lgpl-3.0.html
  */
  
  
- 
-// Turn up error reporting
-error_reporting (E_ALL|E_STRICT);
- 
-// Turn off WSDL caching
-ini_set ('soap.wsdl_cache_enabled', 0);
- 
-// SOAP WSDL endpoint
-define ('ENDPOINT', 'https://api.livedocx.com/1.2/mailmerge.asmx?WSDL');
- 
-// Define timezone
-date_default_timezone_set('Europe/Berlin');
-
-
  
 class IsotopeLiveDocX extends Backend
 {
 	
 	public function __construct()
 	{
+	
+		// Turn up error reporting
+		error_reporting (E_ALL|E_STRICT);
+ 
+		// Turn off WSDL caching
+		ini_set ('soap.wsdl_cache_enabled', 0);
+ 
+		// SOAP WSDL endpoint
+		define ('ENDPOINT', 'https://api.livedocx.com/1.2/mailmerge.asmx?WSDL');
+ 
+		// Define timezone
+		date_default_timezone_set('Europe/Berlin');
+
+
 		parent::__construct();
 		$this->import('Isotope');
 	}
